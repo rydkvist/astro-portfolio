@@ -1,15 +1,21 @@
 ---
 import Document from "./Document.astro";
+import { SEO, type Props as SEOProps } from "astro-seo";
+
 interface Props {
-  title: string;
+  seo?: SEOProps;
 }
 
-const { title } = Astro.props;
+const defaultSEO: SEOProps = {
+  title: "Niklas Rydkvist @ Software Engineer",
+};
+
+const seoConfig = Astro.props.seo ?? defaultSEO;
 ---
 
 <Document>
   <head>
-    <title>{title}</title>
+    <SEO {...seoConfig} />
   </head>
   <body>
     <slot />
@@ -23,17 +29,14 @@ const { title } = Astro.props;
     scroll-behavior: smooth;
     font-family: "Poppins", sans-serif;
   }
-
   body {
     margin: 0;
     padding: 0;
   }
-
   .hide-scrollbar {
     scrollbar-width: none;
     -ms-overflow-style: none;
   }
-
   .hide-scrollbar::-webkit-scrollbar {
     display: none;
   }
