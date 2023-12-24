@@ -1,4 +1,5 @@
 ---
+import { EXTERNAL_LINKS } from "../config";
 import Document from "./Document.astro";
 import { SEO, type Props as SEOProps } from "astro-seo";
 
@@ -7,7 +8,11 @@ interface Props {
 }
 
 const defaultSEO: SEOProps = {
-  title: "Niklas Rydkvist @ Software Engineer",
+  titleDefault: "Niklas Rydkvist",
+  titleTemplate: "%s | Niklas Rydkvist",
+  description:
+    "Niklas Rydkvist is a Software Engineer based in Stockholm, Sweden. He is passionate about building software that facilitates the day-to-day life of people.",
+  canonical: EXTERNAL_LINKS.website,
 };
 
 const seoConfig = Astro.props.seo ?? defaultSEO;
