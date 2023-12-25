@@ -13,7 +13,10 @@ interface Props {
 
 const { label, variant = "side", href, icon, target = "_parent" } = Astro.props;
 
-const isActive = Astro.url.pathname.startsWith(href);
+const isActive =
+  href === "/"
+    ? Astro.url.pathname === "/"
+    : Astro.url.pathname.startsWith(href);
 const showExternalLink = target === "_blank" && variant === "side";
 
 export const cfg = {
