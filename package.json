@@ -9,7 +9,7 @@
     "preview": "astro preview",
     "astro": "astro",
     "lint": "eslint --ext .astro,.js,.jsx,.ts,.tsx src",
-    "icons": "npx @svgr/cli --out-dir ./src/components/react/icons --template ./scripts/icons-transform-template.cjs --index-template ./scripts/icons-index-template.cjs ./src/assets/glyphs --no-dimensions --ref --typescript --no-prettier --ext jsx --filename-case pascal"
+    "icons": "npx @svgr/cli --out-dir ./src/components/react/icons --template ./scripts/icons-transform-template.ts --index-template ./scripts/icons-index-template.ts ./src/assets/glyphs --no-dimensions --ref --typescript --no-prettier --ext tsx --filename-case pascal"
   },
   "dependencies": {
     "@astrojs/check": "^0.3.3",
@@ -24,6 +24,7 @@
   },
   "devDependencies": {
     "@svgr/cli": "^8.1.0",
+    "@types/node": "^20.10.5",
     "@types/react": "^18.2.45",
     "@typescript-eslint/parser": "^6.15.0",
     "eslint": "^8.56.0",

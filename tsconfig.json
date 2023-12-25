@@ -1,7 +1,7 @@
 {
   "extends": "astro/tsconfigs/strict",
   "include": ["src/**/*"],
-  "exclude": ["scripts/**/*", "./src/components/react/icons/**/*"],
+  "exclude": ["./src/components/react/icons/**/*"],
   "compilerOptions": {
     "jsx": "react",
   },
