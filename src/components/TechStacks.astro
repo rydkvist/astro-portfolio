@@ -1,0 +1,29 @@
+---
+import { type TechStack, technologies } from "../db";
+
+interface Props extends Pick<TechStack, "group"> {}
+const { group } = Astro.props;
+
+const tech = technologies.filter((t) => t.group === group);
+---
+
+<ul class="mb-8 flex flex-row flex-wrap justify-center gap-1">
+  {
+    tech.map((t) => (
+      <li class:list={`flex flex-col items-center px-4 py-2`}>
+        <div class:list={`relative mb-2 h-16 w-16 overflow-hidden rounded-md`}>
+          <img src={t.image} alt={t.name} />
+        </div>
+        <span
+          style={{
+            maxWidth: "0.75rem",
+            display: "flex",
+            justifyContent: "center",
+          }}
+        >
+          {t.name}
+        </span>
+      </li>
+    ))
+  }
+</ul>
