@@ -12,10 +12,17 @@ const defaultSEO: SEOProps = {
   titleTemplate: "%s | Niklas Rydkvist",
   description:
     "Niklas Rydkvist is a Software Engineer based in Stockholm, Sweden. He is passionate about building software that facilitates the day-to-day life of people.",
-  canonical: EXTERNAL_LINKS.website,
+  openGraph: {
+    basic: {
+      title: "Niklas Rydkvist",
+      type: "website",
+      url: EXTERNAL_LINKS.website,
+      image: "/public/images/niklas.jpg",
+    },
+  },
 };
 
-const seoConfig = Astro.props.seo ?? defaultSEO;
+const seoConfig: SEOProps = { ...defaultSEO, ...Astro.props.seo };
 ---
 
 <Document>
@@ -23,7 +30,32 @@ const seoConfig = Astro.props.seo ?? defaultSEO;
     <SEO {...seoConfig} />
   </head>
   <body>
-    <slot />
+    <div
+      class="flex max-h-screen min-h-screen flex-col bg-neutral-200 md:flex-row dark:bg-neutral-800"
+    >
+      <div class="sticky top-0 hidden md:order-1 md:flex">
+        {/*Side nav */}
+      </div>
+
+      <div
+        class="flex flex-row items-center justify-between p-2 text-black md:hidden dark:text-white"
+      >
+        <!-- <NavigationBrandLink /> -->
+        <div class="mr-2">
+          <!-- <ThemeToggler /> -->
+        </div>
+      </div>
+
+      <div
+        class="hide-scrollbar order-2 mx-2 flex justify-center overflow-scroll rounded-lg bg-neutral-100 md:m-2 md:w-full md:shadow-lg dark:bg-neutral-900"
+      >
+        <slot />
+      </div>
+
+      <div class="sticky bottom-0 order-3 md:hidden">
+        <!-- <TabNavigation /> -->
+      </div>
+    </div>
   </body>
 </Document>
 
