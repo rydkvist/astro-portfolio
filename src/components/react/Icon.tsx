@@ -13,7 +13,7 @@ export interface IconProps extends Omit<React.SVGProps<SVGElement>, "ref"> {
 
 export const Icon = React.forwardRef<SVGSVGElement, IconProps>(function Icon(
   { name, size = 20, color, title = name, ...props },
-  forwardedRef
+  forwardedRef,
 ) {
   const iconName = `${name}Icon` as const;
   const Component = Icons[iconName];

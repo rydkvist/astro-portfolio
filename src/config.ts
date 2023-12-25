@@ -4,7 +4,7 @@ export const EXTERNAL_LINKS = {
   linkedin: "https://www.linkedin.com/in/niklasrydkvist/",
   spotify: "https://open.spotify.com/user/1123710739",
 } as const;
-  
+
 export type ExternalLinks =
   (typeof EXTERNAL_LINKS)[keyof typeof EXTERNAL_LINKS];
 

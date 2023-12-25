@@ -24,9 +24,9 @@ import { Icon } from "./react/Icon";
   };
 
   const addToggleHandler = (toggle: Element) => {
-    toggle!.setAttribute("title", getMessage());
-    toggle!.setAttribute("aria-label", getMessage());
-    toggle!.setAttribute(
+    toggle.setAttribute("title", getMessage());
+    toggle.setAttribute("aria-label", getMessage());
+    toggle.setAttribute(
       "value",
       html.classList.contains("dark") ? "dark" : "light",
     );
@@ -35,12 +35,12 @@ import { Icon } from "./react/Icon";
       localStorage.setItem("theme", t);
       html.classList.add(t === "dark" ? "dark" : "light");
       html.classList.remove(t === "dark" ? "light" : "dark");
-      toggle!.setAttribute("title", getMessage());
-      toggle!.setAttribute("aria-label", getMessage());
-      toggle!.setAttribute("value", t);
+      toggle.setAttribute("title", getMessage());
+      toggle.setAttribute("aria-label", getMessage());
+      toggle.setAttribute("value", t);
     };
 
-    toggle!.addEventListener("click", () => {
+    toggle.addEventListener("click", () => {
       toggleTheme(html.classList.contains("dark") ? "light" : "dark");
     });
   };

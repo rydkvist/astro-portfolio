@@ -3,6 +3,6 @@
   "include": ["src/**/*"],
   "exclude": ["./src/components/react/icons/**/*"],
   "compilerOptions": {
-    "jsx": "react",
-  },
+    "jsx": "react"
+  }
 }
