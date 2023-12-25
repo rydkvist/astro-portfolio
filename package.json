@@ -8,7 +8,7 @@
     "preview": "astro preview",
     "astro": "astro",
     "lint": "eslint --ext .astro,.js,.jsx,.ts,.tsx src",
-    "icons": "npx @svgr/cli --out-dir ./src/components/react/icons --template ./scripts/icons-transform-template.ts --index-template ./scripts/icons-index-template.ts ./src/assets/glyphs --no-dimensions --ref --typescript --ext tsx --filename-case pascal"
+    "icons": "svgr --out-dir ./src/components/react/icons --template ./scripts/icons-transform-template.ts --index-template ./scripts/icons-index-template.ts ./src/assets/glyphs --no-dimensions --ref --typescript --ext tsx --filename-case pascal"
   },
   "dependencies": {
     "@astrojs/check": "^0.3.3",
