@@ -1,0 +1,14 @@
+---
+import { APP_LINKS } from "../../config";
+const copyrightYear = new Date().getFullYear().toString();
+---
+
+<a
+  href={APP_LINKS.home}
+  class="flex flex-col flex-wrap break-words rounded-md px-2 text-lg font-medium uppercase tracking-wide md:text-base"
+>
+  Niklas Rydkvist
+  <span class="block text-sm text-neutral-600 md:hidden dark:text-neutral-400">
+    © {copyrightYear}
+  </span>
+</a>

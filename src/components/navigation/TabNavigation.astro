@@ -1,0 +1,43 @@
+---
+import NavigationItem from "./NavigationItem.astro";
+---
+
+<nav
+  role="navigation"
+  class="max-h-32 w-full bg-neutral-200 text-black dark:bg-neutral-800 dark:text-white"
+>
+  <ul
+    class="hide-scrollbar flex h-full w-full flex-row overflow-x-scroll p-2 pb-3"
+  >
+    <NavigationItem variant="tab" label="About" href="/about" icon="User" />
+    <NavigationItem
+      variant="tab"
+      label="Projects"
+      href="/projects"
+      icon="Code"
+    />
+    <NavigationItem
+      variant="tab"
+      label="Investments"
+      href="/investments"
+      icon="TrendingUp"
+    />
+    <NavigationItem variant="tab" label="Music" href="/music" icon="Music" />
+    <!-- // TODO: Add contact modal support or create a separate component for both the SideNavigation and TabNavigation -->
+    <NavigationItem variant="tab" label="Contact" href="/about" icon="Mail" />
+    <NavigationItem
+      variant="tab"
+      label="GitHub"
+      href="https://github.com/rydkvist"
+      icon="Github"
+      target="_blank"
+    />
+    <NavigationItem
+      variant="tab"
+      label="LinkedIn"
+      href="https://www.linkedin.com/in/niklasrydkvist/"
+      icon="Linkedin"
+      target="_blank"
+    />
+  </ul>
+</nav>

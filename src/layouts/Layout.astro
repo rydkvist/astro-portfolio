@@ -1,4 +1,8 @@
 ---
+import Branding from "../components/navigation/Branding.astro";
+import SideNavigation from "../components/navigation/SideNavigation.astro";
+import TabNavigation from "../components/navigation/TabNavigation.astro";
+import ThemeToggle from "../components/ThemeToggle.astro";
 import { EXTERNAL_LINKS } from "../config";
 import Document from "./Document.astro";
 import { SEO, type Props as SEOProps } from "astro-seo";
@@ -12,6 +16,7 @@ const defaultSEO: SEOProps = {
   titleTemplate: "%s | Niklas Rydkvist",
   description:
     "Niklas Rydkvist is a Software Engineer based in Stockholm, Sweden. He is passionate about building software that facilitates the day-to-day life of people.",
+  canonical: EXTERNAL_LINKS.website,
   openGraph: {
     basic: {
       title: "Niklas Rydkvist",
@@ -22,7 +27,7 @@ const defaultSEO: SEOProps = {
   },
 };
 
-const seoConfig: SEOProps = { ...defaultSEO, ...Astro.props.seo };
+const seoConfig = { ...defaultSEO, ...Astro.props.seo };
 ---
 
 <Document>
@@ -34,15 +39,15 @@ const seoConfig: SEOProps = { ...defaultSEO, ...Astro.props.seo };
       class="flex max-h-screen min-h-screen flex-col bg-neutral-200 md:flex-row dark:bg-neutral-800"
     >
       <div class="sticky top-0 hidden md:order-1 md:flex">
-        {/*Side nav */}
+        <SideNavigation />
       </div>
 
       <div
         class="flex flex-row items-center justify-between p-2 text-black md:hidden dark:text-white"
       >
-        <!-- <NavigationBrandLink /> -->
+        <Branding />
         <div class="mr-2">
-          <!-- <ThemeToggler /> -->
+          <ThemeToggle />
         </div>
       </div>
 
@@ -53,7 +58,7 @@ const seoConfig: SEOProps = { ...defaultSEO, ...Astro.props.seo };
       </div>
 
       <div class="sticky bottom-0 order-3 md:hidden">
-        <!-- <TabNavigation /> -->
+        <TabNavigation />
       </div>
     </div>
   </body>

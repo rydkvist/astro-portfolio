@@ -6,13 +6,14 @@ export type IconName = WithoutIconSufix<keyof typeof Icons>;
 
 export interface IconProps extends Omit<React.SVGProps<SVGElement>, "ref"> {
   name: IconName;
-  size: number;
+  size?: number;
+  title?: string;
   color?: string;
 }
 
 export const Icon = React.forwardRef<SVGSVGElement, IconProps>(function Icon(
-  { name, size = 20, color, ...props },
-  forwardedRef,
+  { name, size = 20, color, title = name, ...props },
+  forwardedRef
 ) {
   const iconName = `${name}Icon` as const;
   const Component = Icons[iconName];
@@ -31,6 +32,7 @@ export const Icon = React.forwardRef<SVGSVGElement, IconProps>(function Icon(
       width={size}
       height={size}
       color={color}
+      name={title}
       {...props}
     />
   );

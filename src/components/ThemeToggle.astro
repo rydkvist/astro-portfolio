@@ -1,0 +1,49 @@
+---
+import { Icon } from "./react/Icon";
+---
+
+<button
+  class="rounded-lg bg-neutral-100 p-2.5 text-sm text-neutral-500 transition-transform hover:bg-neutral-50 active:scale-95 dark:bg-neutral-700 dark:text-neutral-400 dark:hover:bg-neutral-600"
+  name="theme-toggle"
+>
+  <span class="block dark:hidden">
+    <Icon name="Moon" className="h-5 w-5 md:h-4 md:w-4" />
+  </span>
+  <span class="block dark:hidden">
+    <Icon name="Sun" className="h-5 w-5 md:h-4 md:w-4" />
+  </span>
+</button>
+
+<script>
+  const html = document.documentElement;
+  const themeTogglers = document.querySelectorAll('[name="theme-toggle"]');
+
+  const getMessage = () => {
+    const theme = html.classList.contains("dark") ? "light" : "dark";
+    return `Use ${theme}-mode`;
+  };
+
+  const addToggleHandler = (toggle: Element) => {
+    toggle!.setAttribute("title", getMessage());
+    toggle!.setAttribute("aria-label", getMessage());
+    toggle!.setAttribute(
+      "value",
+      html.classList.contains("dark") ? "dark" : "light",
+    );
+
+    const toggleTheme = (t: "light" | "dark") => {
+      localStorage.setItem("theme", t);
+      html.classList.add(t === "dark" ? "dark" : "light");
+      html.classList.remove(t === "dark" ? "light" : "dark");
+      toggle!.setAttribute("title", getMessage());
+      toggle!.setAttribute("aria-label", getMessage());
+      toggle!.setAttribute("value", t);
+    };
+
+    toggle!.addEventListener("click", () => {
+      toggleTheme(html.classList.contains("dark") ? "light" : "dark");
+    });
+  };
+
+  themeTogglers.forEach(addToggleHandler);
+</script>

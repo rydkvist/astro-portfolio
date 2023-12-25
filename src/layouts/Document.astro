@@ -1,3 +1,7 @@
+---
+const gaID = import.meta.env.PUBLIC_GOOGLE_ANALYTICS_ID;
+---
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -38,6 +42,46 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
+
+    <script
+      is:inline
+      async
+      id={`googleanalytics-${gaID}`}
+      src={`https://www.googletagmanager.com/gtag/js?id=${gaID}`}></script>
+    <!-- 
+    <script is:inline id={`dangerouslySetInnerHTML-${gaID}`}>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", gaID, {
+        page_path: window.location.pathname,
+      });
+    </script> -->
+
+    <script is:inline>
+      const html = document.documentElement;
+      const theme = (() => {
+        if (
+          typeof localStorage !== "undefined" &&
+          localStorage.getItem("theme")
+        ) {
+          return localStorage.getItem("theme");
+        }
+        if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+          return "dark";
+        }
+        return "light";
+      })();
+      if (theme === "light") {
+        html.classList.remove("dark");
+        html.classList.add("light");
+      } else {
+        html.classList.add("dark");
+        html.classList.remove("light");
+      }
+    </script>
   </head>
   <slot />
 

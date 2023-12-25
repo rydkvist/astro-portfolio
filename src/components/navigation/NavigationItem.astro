@@ -1,0 +1,59 @@
+---
+import { Icon, type IconName } from "../react/Icon";
+import { clsx } from "clsx";
+import type { AppLinks, ExternalLinks } from "../../config";
+
+interface Props {
+  label: string;
+  variant?: "side" | "tab";
+  href: AppLinks | ExternalLinks;
+  icon: IconName;
+  target?: "_blank" | "_parent";
+}
+
+const { label, variant = "side", href, icon, target = "_parent" } = Astro.props;
+
+const isActive = Astro.url.pathname.startsWith(href);
+const showExternalLink = target === "_blank" && variant === "side";
+
+const cfg = {
+  side: "flex w-full transition-colors items-center px-3 py-1.5 text-neutral-700 dark:text-neutral-300 rounded-lg cursor-pointer text-sm",
+  sideDefault: "hover:bg-neutral-300/50 hover:dark:bg-neutral-700/50",
+  sideActive: "bg-neutral-300 dark:bg-neutral-700",
+  tab: "flex items-center justify-center p-3 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-300 dark:hover:bg-neutral-700 rounded-lg cursor-pointer transition-colors",
+  tabDefault: "",
+  tabActive: "bg-neutral-300 dark:bg-neutral-700",
+};
+
+const linkClass = clsx({
+  [cfg[variant]]: true,
+  [cfg[`${variant}Active`]]: isActive,
+  [cfg[`${variant}Default`]]: !isActive,
+});
+---
+
+<li class="mx-1 my-1 transition-transform active:scale-95 md:mx-0 md:my-1">
+  <a
+    href={href}
+    target={target}
+    title={label}
+    class:list={linkClass}
+    rel="noreferrer"
+  >
+    <span class="mr-0 md:mr-2">
+      <Icon name={icon} title={label} size={variant === "side" ? 16 : 20} />
+    </span>
+
+    <span class="hidden md:block">
+      {label}
+    </span>
+
+    {
+      showExternalLink && (
+        <span class="ml-auto pl-2">
+          <Icon name="ExternalLink" size={16} />
+        </span>
+      )
+    }
+  </a>
+</li>

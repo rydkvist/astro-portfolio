@@ -4,6 +4,9 @@ export const EXTERNAL_LINKS = {
   linkedin: "https://www.linkedin.com/in/niklasrydkvist/",
   spotify: "https://open.spotify.com/user/1123710739",
 } as const;
+  
+export type ExternalLinks =
+  (typeof EXTERNAL_LINKS)[keyof typeof EXTERNAL_LINKS];
 
 export const APP_LINKS = {
   home: "/",
@@ -12,6 +15,8 @@ export const APP_LINKS = {
   investments: "/investments",
   music: "/music",
 } as const;
+
+export type AppLinks = (typeof APP_LINKS)[keyof typeof APP_LINKS];
 
 export const PERSONAL = {
   email: "niklas@rydkvist.com",

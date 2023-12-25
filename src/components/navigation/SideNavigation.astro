@@ -1,0 +1,58 @@
+---
+import Branding from "./Branding.astro";
+import ThemeToggle from "../ThemeToggle.astro";
+import NavigationItem from "./NavigationItem.astro";
+const copyrightYear = new Date().getFullYear().toString();
+---
+
+<nav
+  role="navigation"
+  class="hide-scrollbar flex w-64 flex-col justify-start overflow-scroll px-4 pb-2 pt-6 text-black dark:text-white"
+>
+  <Branding />
+  <ul class="mb-4 mt-2">
+    <NavigationItem label="About" href="/about" icon="User" />
+  </ul>
+
+  <h3
+    class="break-words px-2 text-sm font-medium text-neutral-600 dark:text-neutral-400"
+  >
+    What I enjoy
+  </h3>
+
+  <ul class="mb-4 mt-2">
+    <NavigationItem label="Projects" href="/projects" icon="Code" />
+    <NavigationItem label="Investments" href="/investments" icon="TrendingUp" />
+    <NavigationItem label="Music" href="/music" icon="Music" />
+  </ul>
+
+  <h3
+    class="break-words px-2 text-sm font-medium text-neutral-600 dark:text-neutral-400"
+  >
+    Stay in touch
+  </h3>
+
+  <ul class="mb-4 mt-2">
+    <!-- // TODO: Add contact modal support or create a separate component for both the SideNavigation and TabNavigation -->
+    <NavigationItem label="Contact" href="/" icon="MessageCircle" />
+    <NavigationItem
+      label="GitHub"
+      href="https://github.com/rydkvist"
+      icon="Github"
+      target="_blank"
+    />
+    <NavigationItem
+      label="LinkedIn"
+      href="https://www.linkedin.com/in/niklasrydkvist/"
+      icon="Linkedin"
+      target="_blank"
+    />
+  </ul>
+
+  <div class="mt-auto flex items-end justify-between">
+    <ThemeToggle />
+    <p class="ml-2 text-sm text-neutral-600 dark:text-neutral-400">
+      Niklas Rydkvist © {copyrightYear}
+    </p>
+  </div>
+</nav>
