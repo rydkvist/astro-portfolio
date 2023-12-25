@@ -1,4 +1,5 @@
 ---
+import ContactModal from "../components/ContactModal.astro";
 import Branding from "../components/navigation/Branding.astro";
 import SideNavigation from "../components/navigation/SideNavigation.astro";
 import TabNavigation from "../components/navigation/TabNavigation.astro";
@@ -35,7 +36,7 @@ const seoConfig = { ...defaultSEO, ...Astro.props.seo };
     <SEO {...seoConfig} />
   </head>
   <body>
-    <div
+    <main
       class="flex max-h-screen min-h-screen flex-col bg-neutral-200 md:flex-row dark:bg-neutral-800"
     >
       <div class="sticky top-0 hidden md:order-1 md:flex">
@@ -51,16 +52,18 @@ const seoConfig = { ...defaultSEO, ...Astro.props.seo };
         </div>
       </div>
 
-      <div
+      <section
         class="hide-scrollbar order-2 mx-2 flex justify-center overflow-scroll rounded-lg bg-neutral-100 md:m-2 md:w-full md:shadow-lg dark:bg-neutral-900"
       >
         <slot />
-      </div>
+      </section>
 
       <div class="sticky bottom-0 order-3 md:hidden">
         <TabNavigation />
       </div>
-    </div>
+
+      <ContactModal />
+    </main>
   </body>
 </Document>
 

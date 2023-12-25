@@ -16,7 +16,7 @@ const { label, variant = "side", href, icon, target = "_parent" } = Astro.props;
 const isActive = Astro.url.pathname.startsWith(href);
 const showExternalLink = target === "_blank" && variant === "side";
 
-const cfg = {
+export const cfg = {
   side: "flex w-full transition-colors items-center px-3 py-1.5 text-neutral-700 dark:text-neutral-300 rounded-lg cursor-pointer text-sm",
   sideDefault: "hover:bg-neutral-300/50 hover:dark:bg-neutral-700/50",
   sideActive: "bg-neutral-300 dark:bg-neutral-700",

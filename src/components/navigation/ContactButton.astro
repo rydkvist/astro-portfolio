@@ -1,0 +1,47 @@
+---
+import { Icon } from "../react/Icon";
+import { cfg } from "./NavigationItem.astro";
+import clsx from "clsx";
+
+interface Props {
+  variant: "side" | "tab";
+}
+
+const { variant } = Astro.props;
+
+const buttonClass = clsx({
+  [cfg[variant]]: true,
+  [cfg[`${variant}Default`]]: true,
+});
+---
+
+<li class="mx-1 my-1 transition-transform active:scale-95 md:mx-0 md:my-1">
+  <button
+    data-contact-button
+    title="Contact"
+    aria-label="Contact"
+    class:list={buttonClass}
+  >
+    <span class="mr-0 md:mr-2">
+      <Icon name="MessageCircle" className="h-5 w-5 md:h-4 md:w-4" />
+    </span>
+    <span class="hidden md:block">Contact</span>
+  </button>
+</li>
+
+<script>
+  const contacts = document.querySelectorAll("[data-contact-button]");
+  contacts.forEach((contact) => {
+    contact.addEventListener("click", () => {
+      const modal = document.querySelector("[data-contact-modal]");
+
+      if (modal && modal.classList.contains("hidden")) {
+        modal.classList.remove("hidden");
+        modal.classList.add("flex");
+      } else if (modal) {
+        modal.classList.remove("flex");
+        modal.classList.add("hidden");
+      }
+    });
+  });
+</script>

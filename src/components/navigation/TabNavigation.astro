@@ -1,4 +1,5 @@
 ---
+import ContactButton from "./ContactButton.astro";
 import NavigationItem from "./NavigationItem.astro";
 ---
 
@@ -9,7 +10,7 @@ import NavigationItem from "./NavigationItem.astro";
   <ul
     class="hide-scrollbar flex h-full w-full flex-row overflow-x-scroll p-2 pb-3"
   >
-    <NavigationItem variant="tab" label="About" href="/about" icon="User" />
+    <NavigationItem variant="tab" label="About" href="/" icon="User" />
     <NavigationItem
       variant="tab"
       label="Projects"
@@ -23,8 +24,8 @@ import NavigationItem from "./NavigationItem.astro";
       icon="TrendingUp"
     />
     <NavigationItem variant="tab" label="Music" href="/music" icon="Music" />
-    <!-- // TODO: Add contact modal support or create a separate component for both the SideNavigation and TabNavigation -->
-    <NavigationItem variant="tab" label="Contact" href="/about" icon="Mail" />
+    <!-- Decide on wether to create a new contact page -->
+    <ContactButton variant="tab" />
     <NavigationItem
       variant="tab"
       label="GitHub"

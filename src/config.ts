@@ -9,8 +9,7 @@ export type ExternalLinks =
   (typeof EXTERNAL_LINKS)[keyof typeof EXTERNAL_LINKS];
 
 export const APP_LINKS = {
-  home: "/",
-  about: "/about",
+  about: "/",
   projects: "/projects",
   investments: "/investments",
   music: "/music",

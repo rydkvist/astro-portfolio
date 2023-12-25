@@ -2,6 +2,7 @@
 import Branding from "./Branding.astro";
 import ThemeToggle from "../ThemeToggle.astro";
 import NavigationItem from "./NavigationItem.astro";
+import ContactButton from "./ContactButton.astro";
 const copyrightYear = new Date().getFullYear().toString();
 ---
 
@@ -11,7 +12,7 @@ const copyrightYear = new Date().getFullYear().toString();
 >
   <Branding />
   <ul class="mb-4 mt-2">
-    <NavigationItem label="About" href="/about" icon="User" />
+    <NavigationItem label="About" href="/" icon="User" />
   </ul>
 
   <h3
@@ -33,8 +34,8 @@ const copyrightYear = new Date().getFullYear().toString();
   </h3>
 
   <ul class="mb-4 mt-2">
-    <!-- // TODO: Add contact modal support or create a separate component for both the SideNavigation and TabNavigation -->
-    <NavigationItem label="Contact" href="/" icon="MessageCircle" />
+    <!-- Decide on wether to create a new contact page -->
+    <ContactButton variant="side" />
     <NavigationItem
       label="GitHub"
       href="https://github.com/rydkvist"
